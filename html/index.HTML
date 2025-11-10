@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAMMERS | RETI RUNS THIS JOINT</title>
+    <meta name="description" content="A simple custom profile page with background video and music.">
+    <meta name="theme-color" content="#080808">
+
+    <!-- Fonts and Icons -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1226817654162063361/1277613483835261001/Screenshot_2024-08-09_190346.png?ex=66cdcdc7&is=66cc7c47&hm=5837c6f054021935d6fa7d917c503bab7da0058b32f383f4b8641273d0e661e1&">
+
+    <!-- Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Satoshi', sans-serif;
+            background-color: #080808;
+            color: #ff0000;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background video */
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Click-to-Enter Overlay */
+        .click-to-enter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 32px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ff0000;
+        }
+
+        /* Main Content */
+        .content {
+            display: none;
+            padding-top: 50px;
+        }
+
+        .device-info {
+            display: none;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        /* Custom Cursor */
+        * {
+            cursor: url('https://cdn.discordapp.com/attachments/1226817654162063361/1277613359922941965/502-5027947_free-png-download-cursor-png-images-background-png.png?ex=66cdcda9&is=66cc7c29&hm=a129d3ecd217b5bac2cbf925a344da1471099ae730a6eec52da13141238551bc&'), auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video id="backgroundVideo" autoplay loop muted playsinline>
+        <source src="https://cdn.discordapp.com/attachments/1226817654162063361/1277607037542465649/0826.mp4?ex=66cdc7c6&is=66cc7646&hm=178e954f54f517d14c2184571fe127fbb0a9c6da0e2e70fcdf0971b402377816&" type="video/mp4">
+    </video>
+
+    <!-- Click-to-Enter Overlay -->
+    <div class="click-to-enter" onclick="enterSite()">
+        click to enter...
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>YOU GOT SCAMMED HAHAHA PUSSY CRY ABOUT IT</h1>
+        <p>GO FUCK YOURSELF</p>
+    </div>
+
+    <!-- Device Info Section -->
+    <div class="device-info" id="deviceInfo">
+        <h2>Device Information:</h2>
+        <p><strong>IP Address:</strong> <span id="ipAddress"></span></p>
+        <p><strong>City:</strong> <span id="city"></span></p>
+        <p><strong>Region:</strong> <span id="region"></span></p>
+        <p><strong>Country:</strong> <span id="country"></span></p>
+        <p><strong>Location:</strong> <span id="location"></span></p>
+        <p><strong>User-Agent:</strong> <span id="userAgent"></span></p>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" src="https://cdn.discordapp.com/attachments/1226817654162063361/1277702464614830152/2024-08-26_14-51-07.mp3?ex=6912dd66&is=69118be6&hm=66d36164dee882e933306ce671bf8e066fa81098d8dd2942a29a5fec41705748&" loop></audio>
+
+    <!-- Scripts -->
+    <script>
+        function enterSite() {
+            document.querySelector('.click-to-enter').style.display = 'none';
+            document.querySelector('.content').style.display = 'block';
+            document.getElementById('backgroundMusic').play();
+
+            // Fetch IP and Geolocation information
+            fetch('https://api.ipgeolocation.io/ipgeo?apiKey=e89cd3cddb044304b59af38c3fc15b39')
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Device Info:", data);
+
+                    // Display the device info on the page
+                    document.getElementById('deviceInfo').style.display = 'block';
+                    document.getElementById('ipAddress').textContent = data.ip || "N/A";
+                    document.getElementById('city').textContent = data.city || "N/A";
+                    document.getElementById('region').textContent = data.state_prov || "N/A";
+                    document.getElementById('country').textContent = data.country_name || "N/A";
+                    document.getElementById('location').textContent = `${data.latitude}, ${data.longitude}` || "N/A";
+                    document.getElementById('userAgent').textContent = navigator.userAgent || "N/A";
+                })
+                .catch(error => {
+                    console.error('Error fetching device info:', error);
+                });
+        }
+    </script>
+</body>
+</html>
